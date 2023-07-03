@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA293BD92A52F5220003DD64 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA293BD82A52F5220003DD64 /* Settings.swift */; };
+		BA293BDB2A53013F0003DD64 /* DevNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA293BDA2A53013F0003DD64 /* DevNotes.swift */; };
 		BA5C56CA2A4EF9030091338D /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56C92A4EF9030091338D /* GameViewModel.swift */; };
 		BA5C56CD2A4EF94F0091338D /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56CC2A4EF94F0091338D /* GameModel.swift */; };
 		BA5C56CF2A4EFD450091338D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56CE2A4EFD450091338D /* HeaderView.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA293BD82A52F5220003DD64 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		BA293BDA2A53013F0003DD64 /* DevNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevNotes.swift; sourceTree = "<group>"; };
 		BA5C56C92A4EF9030091338D /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		BA5C56CC2A4EF94F0091338D /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		BA5C56CE2A4EFD450091338D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 				BA7574272A4E10A000DB5B1A /* GameView.swift */,
 				BA5C56CE2A4EFD450091338D /* HeaderView.swift */,
 				BA5C56D02A4F07340091338D /* GameInstructions.swift */,
+				BA293BD82A52F5220003DD64 /* Settings.swift */,
+				BA293BDA2A53013F0003DD64 /* DevNotes.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,11 +200,13 @@
 			files = (
 				BA5C56D32A51BE7D0091338D /* RootView.swift in Sources */,
 				BA5C56CD2A4EF94F0091338D /* GameModel.swift in Sources */,
+				BA293BD92A52F5220003DD64 /* Settings.swift in Sources */,
 				BA5C56CA2A4EF9030091338D /* GameViewModel.swift in Sources */,
 				BA7574282A4E10A000DB5B1A /* GameView.swift in Sources */,
 				BA7574262A4E10A000DB5B1A /* RandomNumberListApp.swift in Sources */,
 				BA5C56D12A4F07340091338D /* GameInstructions.swift in Sources */,
 				BA5C56CF2A4EFD450091338D /* HeaderView.swift in Sources */,
+				BA293BDB2A53013F0003DD64 /* DevNotes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,20 +7,25 @@
 
 import Foundation
 import AVFAudio
+import SwiftUI
 
 class GameViewModel: ObservableObject {
     @Published private(set) var game: Game
+    @AppStorage("isSoundEnabled") var isSoundEnabled: Bool = true
     
     var audioPlayer: AVAudioPlayer?
     
     func playSound(forResource soundName: String, withExtension ext: String = "mp3") {
-        guard let url = Bundle.main.url(forResource: soundName, withExtension: ext) else { return }
-        
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.play()
-        } catch let error {
-            print("Error: \(error.localizedDescription)")
+        if isSoundEnabled {
+            guard let url = Bundle.main.url(forResource: soundName, withExtension: ext) else { return }
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.play()
+            } catch let error {
+                print("Error: \(error.localizedDescription)")
+            }
+        } else {
+            return
         }
     }
     
@@ -41,23 +46,17 @@ class GameViewModel: ObservableObject {
         game = Game(mode: mode)
         game.generateNextNumber()
     }
-    #warning("Find audio for else")
+#warning("Find audio for else")
     func placeNumber(at index: Int) {
         if game.placeNumber(at: index) {
-                playSound(forResource: "placeNumber")
-            } else {
-                playSound(forResource: "placeNumber")
-            }
+            playSound(forResource: "placeNumber")
             if !game.hasValidMoves() {
                 //game.restartGame()
             }
+        } else {
+            playSound(forResource: "placeNumber")
         }
-    
-    //    func placeNumber(at index: Int) {
-    //        if game.placeNumber(at: index) && !game.hasValidMoves() {
-    //            //game.restartGame()
-    //        }
-    //    }
+    }
     
     func restartGame() {
         let mode = game.mode

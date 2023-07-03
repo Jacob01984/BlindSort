@@ -10,6 +10,8 @@ import SwiftUI
 struct HeaderView: View {
     @ObservedObject var gameViewModel: GameViewModel
     
+    @Binding var isPresented: Bool
+    
     @State var easyGame = false
     @State var mediumGame = false
     @State var hardGame = false
@@ -24,9 +26,7 @@ struct HeaderView: View {
                 HStack {
                     
                     Button {
-                        easyGame = false
-                        mediumGame = false
-                        hardGame = false
+                        isPresented = false
                     } label: {
                         Image(systemName: "chevron.left")
                             .resizable()
@@ -75,6 +75,7 @@ struct HeaderView: View {
 
 struct Header_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderView(gameViewModel: GameViewModel(mode: .easy))
+        HeaderView(gameViewModel: GameViewModel(mode: .easy), isPresented: .constant(false))
+            .preferredColorScheme(.dark)
     }
 }

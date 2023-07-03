@@ -11,6 +11,8 @@ struct GameView: View {
     
     @ObservedObject var gameViewModel: GameViewModel
     
+    @Binding var isPresented: Bool
+    
     @State var showHowTo = false
     
     var body: some View {
@@ -19,14 +21,13 @@ struct GameView: View {
         ZStack {
             Color("background")
                 .ignoresSafeArea()
+            
             VStack {
-                
-                HeaderView(gameViewModel: gameViewModel)
+                HeaderView(gameViewModel: gameViewModel, isPresented: $isPresented)
                     .padding(.top, 50)
                     .padding(.bottom, 40)
                 
                 ScrollView {
-                    
                     ForEach(gameViewModel.numbers.indices, id: \.self) { index in
                         Button(action: {
                             gameViewModel.placeNumber(at: index)
@@ -41,20 +42,29 @@ struct GameView: View {
                     }
                 }
             }
-            ZStack {
-                Rectangle()
-                    .frame(width: 90, height: 65)
-                    .foregroundColor(Color("text-primary"))
-                
+            
+            GeometryReader { geometry in
                 VStack {
-                    Text("Score:")
-                        .font(.title)
-                    Text("\(gameViewModel.score)")
-                        .font(.title2)
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 90, height: 65)
+                                .foregroundColor(Color("text-primary"))
+                            
+                            VStack {
+                                Text("Score:")
+                                    .font(.title)
+                                Text("\(gameViewModel.score)")
+                                    .font(.title2)
+                            }
+                            .foregroundColor(Color("bubble-primary"))
+                        }
+                        .padding()
+                    }
                 }
-                .foregroundColor(Color("bubble-primary"))
             }
-            .position(CGPoint(x: 350, y: 800))
         }
         
     }
@@ -99,6 +109,7 @@ struct GameView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(gameViewModel: GameViewModel(mode: .hard))
+        GameView(gameViewModel: GameViewModel(mode: .hard), isPresented: .constant(true))
+            .preferredColorScheme(.dark)
     }
 }

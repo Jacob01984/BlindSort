@@ -12,6 +12,7 @@ struct RootView: View {
     @StateObject var gameViewModel: GameViewModel
     
     @State var showHowTo = false
+    @State var showSettings = false
     
     @State var easyGame = false
     @State var mediumGame = false
@@ -30,7 +31,7 @@ struct RootView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(Color("bubble-primary"))
                     
-                    Text("Welcome to Blind Number Sort!")
+                    Text("Blind Number Sort")
                         .font(.largeTitle)
                         .foregroundColor(Color("text-primary"))
                 }
@@ -40,17 +41,8 @@ struct RootView: View {
                 
                 //User stats (highest score)
                 
-                Button {
-                   showHowTo = true
-                } label: {
-                    Image(systemName: "questionmark.circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .tint(Color("icons-secondary"))
-                }
                 
                 //GameMode select easy(5), medium(10), hard(20)
-                
                 Button {
                     easyGame = true
                 } label: {
@@ -66,7 +58,6 @@ struct RootView: View {
                         .font(.title)
                     }
                 }
-                
                 Button {
                     mediumGame = true
                 } label: {
@@ -101,22 +92,48 @@ struct RootView: View {
                 
                 
                 Spacer()
+                
+                //How-To and Settings
+                HStack {
+                    Spacer()
+                    Button {
+                       showHowTo = true
+                    } label: {
+                        Image(systemName: "questionmark.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .tint(Color("icons-secondary"))
+                    }
+                    Button {
+                        showSettings = true
+                    } label: {
+                        Image(systemName: "gear.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .tint(Color("icons-secondary"))
+                    }
+                }
+                .padding(.trailing, 30)
             }
             
         }
         .sheet(isPresented: $showHowTo) {
             GameInstructions()
-                .presentationDetents([.fraction(0.5)])
+                .presentationDetents([.fraction(0.8)])
+                .presentationDragIndicator(.visible)
         }
-
+        .sheet(isPresented: $showSettings, content: {
+            Settings(isPresented: $showSettings, gameViewModel: GameViewModel(mode: .easy))
+                .presentationDragIndicator(.visible)
+        })
         .fullScreenCover(isPresented: $easyGame) {
-            GameView(gameViewModel: GameViewModel(mode: .easy), showHowTo: showHowTo)
+            GameView(gameViewModel: GameViewModel(mode: .easy), isPresented: $easyGame, showHowTo: showHowTo)
         }
         .fullScreenCover(isPresented: $mediumGame) {
-            GameView(gameViewModel: GameViewModel(mode: .medium), showHowTo: showHowTo)
+            GameView(gameViewModel: GameViewModel(mode: .medium), isPresented: $mediumGame, showHowTo: showHowTo)
         }
         .fullScreenCover(isPresented: $hardGame) {
-            GameView(gameViewModel: GameViewModel(mode: .hard), showHowTo: showHowTo)
+            GameView(gameViewModel: GameViewModel(mode: .hard), isPresented: $hardGame, showHowTo: showHowTo)
         }
     }
 }
@@ -131,5 +148,6 @@ struct RootView: View {
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView(gameViewModel: GameViewModel(mode: .easy))
+            .preferredColorScheme(.dark)
     }
 }
