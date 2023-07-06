@@ -17,30 +17,34 @@ struct Settings: View {
     
     var body: some View {
         
-            Form {
-                Section {
-                    Toggle(isOn: $gameViewModel.isSoundEnabled) {
-                        Text("Sound Effects")
-                    }
-                } header: {
-                    Text("Settings")
+        Form {
+            Section {
+                Toggle(isOn: $gameViewModel.isSoundEnabled) {
+                    Text("Sound Effects")
                 }
-                Section {
-                    Button {
-                        showNotes = true
-                    } label: {
-                        Text("Developer Notes")
-                    }
-                } header: {
-                    Text("Misc")
-                }
+            } header: {
+                Text("Settings")
+                    .foregroundColor(Color("text-primary"))
             }
-            .scrollContentBackground(.hidden)
-            .background(Color("background"))
-            .sheet(isPresented: $showNotes) {
-                DevNotes()
-                    .presentationDetents([.fraction(0.8)])
-                    .presentationDragIndicator(.visible)
+            
+            Section {
+                Button {
+                    showNotes = true
+                } label: {
+                    Text("Developer Notes")
+                }
+                
+            } header: {
+                Text("Misc")
+                    .foregroundColor(Color("text-primary"))
+            }
+        }
+        .scrollContentBackground(.hidden)
+        .background(Color("darkBlue2"))
+        .sheet(isPresented: $showNotes) {
+            DevNotes()
+                .presentationDetents([.fraction(0.8)])
+                .presentationDragIndicator(.visible)
         }
     }
 }

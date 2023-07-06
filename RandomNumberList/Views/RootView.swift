@@ -22,14 +22,15 @@ struct RootView: View {
         
         
         ZStack {
-            Color("background")
-                .ignoresSafeArea()
+            LinearGradient(gradient: Gradient(colors: [Color("darkBlue3"), Color("darkBlue") , Color("darkBlue3")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+
+            .ignoresSafeArea()
             
             VStack {
                 //Title
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(Color("bubble-primary"))
+                        .foregroundColor(Color("yellow1"))
                     
                     Text("Blind Number Sort")
                         .font(.largeTitle)
@@ -49,6 +50,7 @@ struct RootView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 350, height: 100)
+                            .foregroundColor(Color("yellow1"))
                         HStack {
                             Text("Easy")
                                 .foregroundColor(Color("text-primary"))
@@ -64,6 +66,7 @@ struct RootView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 350, height: 100)
+                            .foregroundColor(Color("yellow1"))
                         HStack {
                             Text("Medium")
                                 .foregroundColor(Color("text-primary"))
@@ -80,6 +83,7 @@ struct RootView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 350, height: 100)
+                            .foregroundColor(Color("yellow1"))
                         HStack {
                             Text("Hard")
                                 .foregroundColor(Color("text-primary"))
@@ -97,7 +101,7 @@ struct RootView: View {
                 HStack {
                     Spacer()
                     Button {
-                       showHowTo = true
+                        showHowTo = true
                     } label: {
                         Image(systemName: "questionmark.circle.fill")
                             .resizable()
@@ -127,13 +131,13 @@ struct RootView: View {
                 .presentationDragIndicator(.visible)
         })
         .fullScreenCover(isPresented: $easyGame) {
-            GameView(gameViewModel: GameViewModel(mode: .easy), isPresented: $easyGame, showHowTo: showHowTo)
+            GameView(gameViewModel: GameViewModel(mode: .easy), isPresented: $easyGame)
         }
         .fullScreenCover(isPresented: $mediumGame) {
-            GameView(gameViewModel: GameViewModel(mode: .medium), isPresented: $mediumGame, showHowTo: showHowTo)
+            GameView(gameViewModel: GameViewModel(mode: .medium), isPresented: $mediumGame)
         }
         .fullScreenCover(isPresented: $hardGame) {
-            GameView(gameViewModel: GameViewModel(mode: .hard), isPresented: $hardGame, showHowTo: showHowTo)
+            GameView(gameViewModel: GameViewModel(mode: .hard), isPresented: $hardGame)
         }
     }
 }

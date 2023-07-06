@@ -11,6 +11,7 @@ import SwiftUI
 
 class GameViewModel: ObservableObject {
     @Published private(set) var game: Game
+    @Published var wonGame: Bool = false
     @AppStorage("isSoundEnabled") var isSoundEnabled: Bool = true
     
     var audioPlayer: AVAudioPlayer?
@@ -46,15 +47,20 @@ class GameViewModel: ObservableObject {
         game = Game(mode: mode)
         game.generateNextNumber()
     }
-#warning("Find audio for else")
+    
+    func isPlacementValid(at index: Int) -> Bool {
+            game.isPlacementValid(at: index)
+        }
+    
     func placeNumber(at index: Int) {
         if game.placeNumber(at: index) {
             playSound(forResource: "placeNumber")
+            wonGame = game.wonGame(score: game.score)
             if !game.hasValidMoves() {
                 //game.restartGame()
             }
         } else {
-            playSound(forResource: "placeNumber")
+            playSound(forResource: "placeNumber")       //find audio for !placeNumber
         }
     }
     
@@ -62,5 +68,9 @@ class GameViewModel: ObservableObject {
         let mode = game.mode
         game = Game(mode: mode)
         game.restartGame()
+    }
+
+    func wonGame(score: Int) -> Bool {
+        game.wonGame(score: score)
     }
 }

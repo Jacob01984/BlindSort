@@ -19,7 +19,7 @@ struct HeaderView: View {
     var body: some View {
 
         ZStack {
-            Color("background")
+            Color("darkBlue2")
                 .ignoresSafeArea()
             
             VStack {
@@ -34,12 +34,11 @@ struct HeaderView: View {
                             .frame(width: 30, height: 25)
                             .tint(Color("icons-secondary"))
                     }
-
-                    
                     Spacer()
                     
                     Text("Blind Number Sort")
                         .font(.title3)
+                        .foregroundColor(Color("icons-secondary"))
                     
                     Spacer()
                     
@@ -56,20 +55,17 @@ struct HeaderView: View {
                 
                 HStack {
                     ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(Color("bubble-primary"))
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundColor(Color("yellow2"))
                             .frame(width: 70, height: 50)
                         Text("\(gameViewModel.nextNumber)")
                             .font(.largeTitle)
+                            .foregroundColor(Color("darkBlue2"))
                     }
                 }
-                //.padding(.top, 20)
             }
         }
-        .frame(height: 50)
-        
-        
-        
+        .frame(height: 50)   
     }
 }
 

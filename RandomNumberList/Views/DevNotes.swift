@@ -10,7 +10,7 @@ import SwiftUI
 struct DevNotes: View {
     var body: some View {
         ZStack {
-            Color("background")
+            Color("darkBlue2")
                 .ignoresSafeArea()
             VStack {
                 Text("""
@@ -23,6 +23,8 @@ struct DevNotes: View {
                 If you would like to connect, my socials will be down below!
                 
                 """)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.white)
                 
                 HStack {
                     Button(action: {
@@ -34,6 +36,7 @@ struct DevNotes: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 50, height: 50)
+                            .foregroundColor(Color("yellow1"))
                     }
                     Button(action: {
                         if let url = URL(string: "https://github.com/Jacob01984") {
@@ -44,6 +47,7 @@ struct DevNotes: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 50, height: 50)
+                            .foregroundColor(Color("yellow1"))
                     }
                     Button(action: {
                         if let url = URL(string: "https://www.linkedin.com/in/jacob-lavenant-094612251/") {
@@ -54,6 +58,7 @@ struct DevNotes: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 50, height: 50)
+                            .foregroundColor(Color("yellow1"))
                     }
                 }
                 Spacer()

@@ -13,20 +13,21 @@ struct GameView: View {
     
     @Binding var isPresented: Bool
     
-    @State var showHowTo = false
+    @State var showWonGame = false
     
     var body: some View {
         
         
         ZStack {
-            Color("background")
+            Color("darkBlue2")
                 .ignoresSafeArea()
             
             VStack {
+                
                 HeaderView(gameViewModel: gameViewModel, isPresented: $isPresented)
                     .padding(.top, 50)
                     .padding(.bottom, 40)
-                
+                //List
                 ScrollView {
                     ForEach(gameViewModel.numbers.indices, id: \.self) { index in
                         Button(action: {
@@ -43,15 +44,16 @@ struct GameView: View {
                 }
             }
             
+            //Score
             GeometryReader { geometry in
                 VStack {
                     Spacer()
                     HStack {
                         Spacer()
                         ZStack {
-                            Rectangle()
+                            RoundedRectangle(cornerRadius: 15)
                                 .frame(width: 90, height: 65)
-                                .foregroundColor(Color("text-primary"))
+                                .foregroundColor(Color("darkBlue2"))
                             
                             VStack {
                                 Text("Score:")
@@ -59,49 +61,60 @@ struct GameView: View {
                                 Text("\(gameViewModel.score)")
                                     .font(.title2)
                             }
-                            .foregroundColor(Color("bubble-primary"))
+                            .foregroundColor(Color("yellow2"))
                         }
-                        .padding()
+                        .padding(.horizontal)
                     }
                 }
             }
         }
         
+        .alert("Game Won!", isPresented: $gameViewModel.wonGame, presenting: gameViewModel) { game in
+            Button("Back", role: .cancel) { }
+            Button("Next") {
+                gameViewModel.restartGame()
+            }
+        }
     }
     
     func ListRowPlaced(index: Int, number: Int) -> some View {
         HStack {
+            Spacer()
             Text("\(index + 1)")
                 .foregroundColor(Color("text-primary"))
+            Spacer()
             ZStack {
                 Rectangle()
-                    .foregroundColor(Color("icons-input"))
+                    .foregroundColor(Color("darkBlue3"))
                 Text("\(number)")
                     .font(.title)
                     .foregroundColor(Color("text-primary"))
                 //.padding(.trailing, 250)
             }
             .frame(width: 350, height: 50)
+            Spacer()
         }
     }
     
     func ListRow(index: Int) -> some View {
         HStack {
+            Spacer()
             Text("\(index + 1)")
                 .foregroundColor(Color("text-primary"))
-            
+            Spacer()
             ZStack {
                 Rectangle()
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color("darkBlue3"))
+                    .border(Color("yellow2"), width: gameViewModel.isPlacementValid(at: index) ? 5 : 0)
+            
                 Text("-")
-                    .foregroundColor(Color("text-secondary"))
+                    .foregroundColor(Color("text-primary"))
                     .font(.title)
             }
             .frame(width: 350, height: 50)
+            Spacer()
         }
     }
-    
-    
     
     
 }

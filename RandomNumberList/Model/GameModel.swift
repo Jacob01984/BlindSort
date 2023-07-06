@@ -70,4 +70,8 @@ struct Game {
         generateNextNumber()
         score = 0
     }
+    
+    mutating func wonGame(score: Int) -> Bool {
+        return score == mode.rawValue
+    }
 }
