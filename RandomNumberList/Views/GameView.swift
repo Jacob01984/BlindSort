@@ -42,6 +42,7 @@ struct GameView: View {
                         .disabled(gameViewModel.numbers[index] != nil)
                     }
                 }
+                
             }
             
             //Score
@@ -97,30 +98,33 @@ struct GameView: View {
     }
     
     func ListRow(index: Int) -> some View {
-        HStack {
-            Spacer()
-            Text("\(index + 1)")
-                .foregroundColor(Color("text-primary"))
-            Spacer()
-            ZStack {
-                Rectangle()
-                    .foregroundColor(Color("darkBlue3"))
-                    .border(Color("yellow2"), width: gameViewModel.isPlacementValid(at: index) ? 5 : 0)
-            
-                Text("-")
+        GeometryReader { geometry in
+            HStack {
+                Spacer()
+                Text("\(index + 1)")
                     .foregroundColor(Color("text-primary"))
-                    .font(.title)
+                Spacer()
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(Color("darkBlue3"))
+                        .border(Color("yellow2"), width: gameViewModel.isPlacementValid(at: index) ? 5 : 0)
+                
+                    Text("-")
+                        .foregroundColor(Color("text-primary"))
+                        .font(.title)
+                }
+                .frame(width: geometry.size.width * 0.85, height: 50)
+                Spacer()
             }
-            .frame(width: 350, height: 50)
-            Spacer()
         }
+        .frame(height: 50)
     }
     
     
 }
 
 
-struct ContentView_Previews: PreviewProvider {
+struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView(gameViewModel: GameViewModel(mode: .hard), isPresented: .constant(true))
             .preferredColorScheme(.dark)

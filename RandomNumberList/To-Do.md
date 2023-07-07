@@ -1,13 +1,16 @@
 #  To-Do
 
 ## Now
-- Game Finish pop up
-- Back button in GameView
+- Finish audio
 
 
 ##Next
-- Revamp UI color
-- Finish audio
+- Game Center leader boards
 
 ##Later
-- Game Center leader boards
+
+
+##Complete
+- Game Finish pop up
+- Back button in GameView
+- Revamp UI color

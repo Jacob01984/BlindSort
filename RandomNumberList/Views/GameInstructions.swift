@@ -16,7 +16,6 @@ struct GameInstructions: View {
             ScrollView {
                 VStack() {
                     Text("Welcome to Blind Number Sort!")
-                        //.padding(.trailing, 100)
                     Text("  You are given an empty list, and 20 random numbers one at a time, ranging between 0-1000. The objective is to add each number in ascending order.")
                         .padding(.top, 15)
                     Text("  For example, you are given 56 and you select the position to be at 1, but then the next number is 10, you would lose the game since 10 is less 50 and there is no slot before 1.")
