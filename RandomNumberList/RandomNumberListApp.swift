@@ -11,7 +11,7 @@ import SwiftUI
 struct RandomNumberListApp: App {
     var body: some Scene {
         WindowGroup {
-            RootView(gameViewModel: GameViewModel(mode: .easy))
+            RootView(gameViewModel: GameViewModel(mode:  .easy))
         }
     }
 }
