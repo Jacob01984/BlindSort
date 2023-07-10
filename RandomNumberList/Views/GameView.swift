@@ -62,7 +62,7 @@ struct GameView: View {
                                 Text("\(gameViewModel.score)")
                                     .font(.title2)
                             }
-                            .foregroundColor(Color("yellow2"))
+                            .foregroundColor(Color("text-primary"))
                         }
                         .padding(.horizontal)
                     }

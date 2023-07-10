@@ -12,7 +12,6 @@ struct RandomNumberListApp: App {
     var body: some Scene {
         WindowGroup {
             RootView(gameViewModel: GameViewModel(mode: .easy))
-            //GameView(gameViewModel: GameViewModel(mode: .easy), isPresented: .constant(false))
         }
     }
 }

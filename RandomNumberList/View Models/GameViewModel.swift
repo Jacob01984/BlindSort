@@ -60,7 +60,7 @@ class GameViewModel: ObservableObject {
                 //game.restartGame()
             }
         } else {
-            playSound(forResource: "placeNumber")       //find audio for !placeNumber
+            //playSound(forResource: "placeNumber")       //find audio for !placeNumber
         }
     }
     

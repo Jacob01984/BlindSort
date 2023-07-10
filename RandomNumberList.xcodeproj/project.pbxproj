@@ -12,13 +12,14 @@
 		BA5C56CA2A4EF9030091338D /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56C92A4EF9030091338D /* GameViewModel.swift */; };
 		BA5C56CD2A4EF94F0091338D /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56CC2A4EF94F0091338D /* GameModel.swift */; };
 		BA5C56CF2A4EFD450091338D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56CE2A4EFD450091338D /* HeaderView.swift */; };
-		BA5C56D12A4F07340091338D /* GameInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56D02A4F07340091338D /* GameInstructions.swift */; };
+		BA5C56D12A4F07340091338D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56D02A4F07340091338D /* WelcomeView.swift */; };
 		BA5C56D32A51BE7D0091338D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56D22A51BE7D0091338D /* RootView.swift */; };
 		BA5C56DA2A525FA50091338D /* placeNumber.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA5C56D92A525FA50091338D /* placeNumber.mp3 */; };
 		BA7574262A4E10A000DB5B1A /* RandomNumberListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7574252A4E10A000DB5B1A /* RandomNumberListApp.swift */; };
 		BA7574282A4E10A000DB5B1A /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7574272A4E10A000DB5B1A /* GameView.swift */; };
 		BA75742A2A4E10A200DB5B1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7574292A4E10A200DB5B1A /* Assets.xcassets */; };
 		BA75742D2A4E10A200DB5B1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA75742C2A4E10A200DB5B1A /* Preview Assets.xcassets */; };
+		BA7BC7652A5C52EB00C783AC /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7BC7642A5C52EB00C783AC /* InstructionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,7 @@
 		BA5C56C92A4EF9030091338D /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		BA5C56CC2A4EF94F0091338D /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		BA5C56CE2A4EFD450091338D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		BA5C56D02A4F07340091338D /* GameInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInstructions.swift; sourceTree = "<group>"; };
+		BA5C56D02A4F07340091338D /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		BA5C56D22A51BE7D0091338D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		BA5C56D72A525F470091338D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA5C56D92A525FA50091338D /* placeNumber.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = placeNumber.mp3; sourceTree = "<group>"; };
@@ -37,6 +38,7 @@
 		BA7574272A4E10A000DB5B1A /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		BA7574292A4E10A200DB5B1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA75742C2A4E10A200DB5B1A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BA7BC7642A5C52EB00C783AC /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +58,10 @@
 				BA5C56D22A51BE7D0091338D /* RootView.swift */,
 				BA7574272A4E10A000DB5B1A /* GameView.swift */,
 				BA5C56CE2A4EFD450091338D /* HeaderView.swift */,
-				BA5C56D02A4F07340091338D /* GameInstructions.swift */,
+				BA5C56D02A4F07340091338D /* WelcomeView.swift */,
 				BA293BD82A52F5220003DD64 /* Settings.swift */,
 				BA293BDA2A53013F0003DD64 /* DevNotes.swift */,
+				BA7BC7642A5C52EB00C783AC /* InstructionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -106,12 +109,12 @@
 		BA7574242A4E10A000DB5B1A /* RandomNumberList */ = {
 			isa = PBXGroup;
 			children = (
-				BA5C56D82A525F950091338D /* Sounds */,
 				BA5C56D72A525F470091338D /* Info.plist */,
 				BA7574252A4E10A000DB5B1A /* RandomNumberListApp.swift */,
 				BA5C56C72A4EF7CA0091338D /* Views */,
 				BA5C56C82A4EF7D70091338D /* View Models */,
 				BA5C56CB2A4EF9340091338D /* Model */,
+				BA5C56D82A525F950091338D /* Sounds */,
 				BA7574292A4E10A200DB5B1A /* Assets.xcassets */,
 				BA75742B2A4E10A200DB5B1A /* Preview Content */,
 				BA5C56DB2A5271DB0091338D /* To-Do.md */,
@@ -199,12 +202,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA5C56D32A51BE7D0091338D /* RootView.swift in Sources */,
+				BA7BC7652A5C52EB00C783AC /* InstructionsView.swift in Sources */,
 				BA5C56CD2A4EF94F0091338D /* GameModel.swift in Sources */,
 				BA293BD92A52F5220003DD64 /* Settings.swift in Sources */,
 				BA5C56CA2A4EF9030091338D /* GameViewModel.swift in Sources */,
 				BA7574282A4E10A000DB5B1A /* GameView.swift in Sources */,
 				BA7574262A4E10A000DB5B1A /* RandomNumberListApp.swift in Sources */,
-				BA5C56D12A4F07340091338D /* GameInstructions.swift in Sources */,
+				BA5C56D12A4F07340091338D /* WelcomeView.swift in Sources */,
 				BA5C56CF2A4EFD450091338D /* HeaderView.swift in Sources */,
 				BA293BDB2A53013F0003DD64 /* DevNotes.swift in Sources */,
 			);
@@ -340,16 +344,19 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RandomNumberList/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Blind Sort";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = NO;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = JacobLavenant.RandomNumberList;
+				PRODUCT_BUNDLE_IDENTIFIER = JacobLavenant.BlindSort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -373,16 +380,19 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RandomNumberList/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Blind Sort";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = NO;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = JacobLavenant.RandomNumberList;
+				PRODUCT_BUNDLE_IDENTIFIER = JacobLavenant.BlindSort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

@@ -11,6 +11,7 @@ struct RootView: View {
     
     @StateObject var gameViewModel: GameViewModel
     
+    @State private var showWelcomeScreen = !UserDefaults.standard.bool(forKey: "DidLaunchBefore")
     @State var showHowTo = false
     @State var showSettings = false
     
@@ -121,8 +122,13 @@ struct RootView: View {
             }
             
         }
+        .fullScreenCover(isPresented: $showWelcomeScreen, onDismiss: {
+                    UserDefaults.standard.set(true, forKey: "DidLaunchBefore")
+                }) {
+                    WelcomeView(showWelcome: $showWelcomeScreen)
+                }
         .sheet(isPresented: $showHowTo) {
-            GameInstructions()
+            WelcomeView(showWelcome: $showWelcomeScreen)
                 .presentationDetents([.fraction(0.8)])
                 .presentationDragIndicator(.visible)
         }
