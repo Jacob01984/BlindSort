@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GameKit
 
 struct HeaderView: View {
     @ObservedObject var gameViewModel: GameViewModel
@@ -27,6 +28,7 @@ struct HeaderView: View {
                     
                     Button {
                         isPresented = false
+                        GKAccessPoint.shared.isActive = true
                     } label: {
                         Image(systemName: "chevron.left")
                             .resizable()

@@ -15,6 +15,7 @@ struct GameView: View {
     
     @State var showWonGame = false
     
+    
     var body: some View {
         
         
@@ -23,25 +24,39 @@ struct GameView: View {
                 .ignoresSafeArea()
             
             VStack {
+
+                    HeaderView(gameViewModel: gameViewModel, isPresented: $isPresented)
+                        .padding(.top, 50)
+                        .padding(.bottom, 40)
+            
                 
-                HeaderView(gameViewModel: gameViewModel, isPresented: $isPresented)
-                    .padding(.top, 50)
-                    .padding(.bottom, 40)
                 //List
                 ScrollView {
-                    ForEach(gameViewModel.numbers.indices, id: \.self) { index in
-                        Button(action: {
-                            gameViewModel.placeNumber(at: index)
-                        }) {
-                            if let number = gameViewModel.numbers[index] {
-                                ListRowPlaced(index: index, number: number)
-                            } else {
-                                ListRow(index: index)
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 30, style: RoundedCornerStyle.continuous)
+                            .frame(width: 415)
+                            .foregroundColor(Color("darkBlue3"))
+                            .ignoresSafeArea()
+                        VStack {
+                            ForEach(gameViewModel.numbers.indices, id: \.self) { index in
+                                Button(action: {
+                                    gameViewModel.placeNumber(at: index)
+                                }) {
+                                    if let number = gameViewModel.numbers[index] {
+                                        ListRowPlaced(index: index, number: number)
+                                    } else {
+                                        ListRow(index: index)
+                                    }
+                                }
+                                .disabled(gameViewModel.numbers[index] != nil)
                             }
                         }
-                        .disabled(gameViewModel.numbers[index] != nil)
+                        .padding(.bottom, 25)
+                        .padding(.top)
                     }
                 }
+                .padding(.top, 20)
+                
                 
             }
             
@@ -79,6 +94,7 @@ struct GameView: View {
     }
     
     func ListRowPlaced(index: Int, number: Int) -> some View {
+        
         HStack {
             Spacer()
             Text("\(index + 1)")
@@ -107,8 +123,8 @@ struct GameView: View {
                 ZStack {
                     Rectangle()
                         .foregroundColor(Color("darkBlue3"))
-                        .border(Color("yellow2"), width: gameViewModel.isPlacementValid(at: index) ? 5 : 0)
-                
+                        .border(Color("yellow2"), width: gameViewModel.isPlacementValid(at: index) ? 2 : 0)
+                    
                     Text("-")
                         .foregroundColor(Color("text-primary"))
                         .font(.title)
@@ -119,14 +135,12 @@ struct GameView: View {
         }
         .frame(height: 50)
     }
-    
-    
 }
 
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(gameViewModel: GameViewModel(mode: .hard), isPresented: .constant(true))
+        GameView(gameViewModel: GameViewModel(mode: .medium), isPresented: .constant(true))
             .preferredColorScheme(.dark)
     }
 }

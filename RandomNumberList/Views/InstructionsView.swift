@@ -9,6 +9,8 @@ import SwiftUI
 
 struct InstructionsView: View {
     
+    @Binding var showHowTo: Bool
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color("darkBlue3"), Color("darkBlue") , Color("darkBlue3")]), startPoint: .topLeading, endPoint: .bottomTrailing)
@@ -42,6 +44,6 @@ struct InstructionsView: View {
 
 struct InstructionsView_Previews: PreviewProvider {
     static var previews: some View {
-        InstructionsView()
+        InstructionsView(showHowTo: .constant(true))
     }
 }

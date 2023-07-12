@@ -20,6 +20,7 @@
 		BA75742A2A4E10A200DB5B1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7574292A4E10A200DB5B1A /* Assets.xcassets */; };
 		BA75742D2A4E10A200DB5B1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA75742C2A4E10A200DB5B1A /* Preview Assets.xcassets */; };
 		BA7BC7652A5C52EB00C783AC /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7BC7642A5C52EB00C783AC /* InstructionsView.swift */; };
+		BA7BC7672A5DDD7400C783AC /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7BC7662A5DDD7400C783AC /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		BA7574292A4E10A200DB5B1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA75742C2A4E10A200DB5B1A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA7BC7642A5C52EB00C783AC /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
+		BA7BC7662A5DDD7400C783AC /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		BA7BC7682A5DE24900C783AC /* RandomNumberList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RandomNumberList.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,7 @@
 				BA293BD82A52F5220003DD64 /* Settings.swift */,
 				BA293BDA2A53013F0003DD64 /* DevNotes.swift */,
 				BA7BC7642A5C52EB00C783AC /* InstructionsView.swift */,
+				BA7BC7662A5DDD7400C783AC /* UserProfile.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -109,6 +113,7 @@
 		BA7574242A4E10A000DB5B1A /* RandomNumberList */ = {
 			isa = PBXGroup;
 			children = (
+				BA7BC7682A5DE24900C783AC /* RandomNumberList.entitlements */,
 				BA5C56D72A525F470091338D /* Info.plist */,
 				BA7574252A4E10A000DB5B1A /* RandomNumberListApp.swift */,
 				BA5C56C72A4EF7CA0091338D /* Views */,
@@ -206,6 +211,7 @@
 				BA5C56CD2A4EF94F0091338D /* GameModel.swift in Sources */,
 				BA293BD92A52F5220003DD64 /* Settings.swift in Sources */,
 				BA5C56CA2A4EF9030091338D /* GameViewModel.swift in Sources */,
+				BA7BC7672A5DDD7400C783AC /* UserProfile.swift in Sources */,
 				BA7574282A4E10A000DB5B1A /* GameView.swift in Sources */,
 				BA7574262A4E10A000DB5B1A /* RandomNumberListApp.swift in Sources */,
 				BA5C56D12A4F07340091338D /* WelcomeView.swift in Sources */,
@@ -336,6 +342,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RandomNumberList/RandomNumberList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RandomNumberList/Preview Content\"";
@@ -362,6 +369,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -372,6 +380,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RandomNumberList/RandomNumberList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RandomNumberList/Preview Content\"";
@@ -398,6 +407,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
