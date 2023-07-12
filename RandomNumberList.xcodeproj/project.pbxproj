@@ -15,12 +15,12 @@
 		BA5C56D12A4F07340091338D /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56D02A4F07340091338D /* WelcomeView.swift */; };
 		BA5C56D32A51BE7D0091338D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56D22A51BE7D0091338D /* RootView.swift */; };
 		BA5C56DA2A525FA50091338D /* placeNumber.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA5C56D92A525FA50091338D /* placeNumber.mp3 */; };
+		BA5F63A32A5F00550098BF26 /* BackGroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F63A22A5F00550098BF26 /* BackGroundView.swift */; };
 		BA7574262A4E10A000DB5B1A /* RandomNumberListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7574252A4E10A000DB5B1A /* RandomNumberListApp.swift */; };
 		BA7574282A4E10A000DB5B1A /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7574272A4E10A000DB5B1A /* GameView.swift */; };
 		BA75742A2A4E10A200DB5B1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7574292A4E10A200DB5B1A /* Assets.xcassets */; };
 		BA75742D2A4E10A200DB5B1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA75742C2A4E10A200DB5B1A /* Preview Assets.xcassets */; };
 		BA7BC7652A5C52EB00C783AC /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7BC7642A5C52EB00C783AC /* InstructionsView.swift */; };
-		BA7BC7672A5DDD7400C783AC /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7BC7662A5DDD7400C783AC /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,13 +34,13 @@
 		BA5C56D72A525F470091338D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA5C56D92A525FA50091338D /* placeNumber.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = placeNumber.mp3; sourceTree = "<group>"; };
 		BA5C56DB2A5271DB0091338D /* To-Do.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "To-Do.md"; sourceTree = "<group>"; };
+		BA5F63A22A5F00550098BF26 /* BackGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundView.swift; sourceTree = "<group>"; };
 		BA7574222A4E10A000DB5B1A /* RandomNumberList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomNumberList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7574252A4E10A000DB5B1A /* RandomNumberListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberListApp.swift; sourceTree = "<group>"; };
 		BA7574272A4E10A000DB5B1A /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		BA7574292A4E10A200DB5B1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA75742C2A4E10A200DB5B1A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA7BC7642A5C52EB00C783AC /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
-		BA7BC7662A5DDD7400C783AC /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		BA7BC7682A5DE24900C783AC /* RandomNumberList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RandomNumberList.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,11 +61,8 @@
 				BA5C56D22A51BE7D0091338D /* RootView.swift */,
 				BA7574272A4E10A000DB5B1A /* GameView.swift */,
 				BA5C56CE2A4EFD450091338D /* HeaderView.swift */,
-				BA5C56D02A4F07340091338D /* WelcomeView.swift */,
-				BA293BD82A52F5220003DD64 /* Settings.swift */,
-				BA293BDA2A53013F0003DD64 /* DevNotes.swift */,
-				BA7BC7642A5C52EB00C783AC /* InstructionsView.swift */,
-				BA7BC7662A5DDD7400C783AC /* UserProfile.swift */,
+				BA5F63A52A5F43520098BF26 /* Misc Views */,
+				BA5F63A42A5F0D8E0098BF26 /* View Helpers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -92,6 +89,25 @@
 				BA5C56D92A525FA50091338D /* placeNumber.mp3 */,
 			);
 			path = Sounds;
+			sourceTree = "<group>";
+		};
+		BA5F63A42A5F0D8E0098BF26 /* View Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BA5F63A22A5F00550098BF26 /* BackGroundView.swift */,
+			);
+			path = "View Helpers";
+			sourceTree = "<group>";
+		};
+		BA5F63A52A5F43520098BF26 /* Misc Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA5C56D02A4F07340091338D /* WelcomeView.swift */,
+				BA293BD82A52F5220003DD64 /* Settings.swift */,
+				BA293BDA2A53013F0003DD64 /* DevNotes.swift */,
+				BA7BC7642A5C52EB00C783AC /* InstructionsView.swift */,
+			);
+			path = "Misc Views";
 			sourceTree = "<group>";
 		};
 		BA7574192A4E10A000DB5B1A = {
@@ -211,7 +227,7 @@
 				BA5C56CD2A4EF94F0091338D /* GameModel.swift in Sources */,
 				BA293BD92A52F5220003DD64 /* Settings.swift in Sources */,
 				BA5C56CA2A4EF9030091338D /* GameViewModel.swift in Sources */,
-				BA7BC7672A5DDD7400C783AC /* UserProfile.swift in Sources */,
+				BA5F63A32A5F00550098BF26 /* BackGroundView.swift in Sources */,
 				BA7574282A4E10A000DB5B1A /* GameView.swift in Sources */,
 				BA7574262A4E10A000DB5B1A /* RandomNumberListApp.swift in Sources */,
 				BA5C56D12A4F07340091338D /* WelcomeView.swift in Sources */,
@@ -344,7 +360,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RandomNumberList/RandomNumberList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"RandomNumberList/Preview Content\"";
 				DEVELOPMENT_TEAM = 6LQ54Z2R3L;
 				ENABLE_PREVIEWS = YES;
@@ -362,7 +378,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = JacobLavenant.BlindSort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -382,7 +398,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RandomNumberList/RandomNumberList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"RandomNumberList/Preview Content\"";
 				DEVELOPMENT_TEAM = 6LQ54Z2R3L;
 				ENABLE_PREVIEWS = YES;
@@ -400,7 +416,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = JacobLavenant.BlindSort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

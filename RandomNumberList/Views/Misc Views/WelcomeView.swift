@@ -1,26 +1,27 @@
 //
-//  InstructionsView.swift
+//  GameInstructions.swift
 //  RandomNumberList
 //
-//  Created by Jacob Lavenant on 7/10/23.
+//  Created by Jacob Lavenant on 6/30/23.
 //
 
 import SwiftUI
 
-struct InstructionsView: View {
+struct WelcomeView: View {
     
-    @Binding var showHowTo: Bool
+    @Binding var showWelcome: Bool
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("darkBlue3"), Color("darkBlue") , Color("darkBlue3")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(gradient: Gradient(colors: [Color("darkBlue3"), Color("lightBlue"), Color("darkBlue3"), Color("darkBlue2"), Color("darkBlue3"), Color("darkBlue2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
+                .blur(radius: 80, opaque: true)
             
             ScrollView {
                 
                 VStack() {
                     Spacer()
-                    Text("How-To Play")
+                    Text("Welcome to Blind Number Sort!")
                         .font(.title3)
                     Text("  You are given an empty list, and random numbers one at a time, ranging between 0-1000. The objective is to add each number in ascending order.")
                         .padding(.top, 15)
@@ -30,7 +31,22 @@ struct InstructionsView: View {
                         .padding(.top, 15)
                     Text("Enjoy the game!")
                         .padding(.top, 15)
+                    
                     Spacer()
+                    
+                    Button {
+                        showWelcome = false
+                    } label: {
+                        Image(systemName: "play.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 35, height: 35)
+                            .foregroundColor(Color("text-primary"))
+                    }
+                    .padding()
+                    .frame(width: 250, height: 70)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(14)
                     
                 }
                 .bold()
@@ -42,8 +58,8 @@ struct InstructionsView: View {
     }
 }
 
-struct InstructionsView_Previews: PreviewProvider {
+struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        InstructionsView(showHowTo: .constant(true))
+        WelcomeView(showWelcome: .constant(true))
     }
 }

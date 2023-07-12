@@ -17,7 +17,8 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
     @AppStorage("isSoundEnabled") var isSoundEnabled: Bool = true
     @Published var gameCenterLoginVC: UIViewController?
     
-    //Audio
+    
+    /*Audio*/
     var audioPlayer: AVAudioPlayer?
     
     func playSound(forResource soundName: String, withExtension ext: String = "mp3") {
@@ -34,7 +35,8 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         }
     }
     
-    //Game Logic
+    
+    /*Game Logic*/
     var numbers: [Int?] {
         game.numbers
     }
@@ -50,8 +52,6 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         super.init()
         self.game.generateNextNumber()
         self.authenticateLocalPlayer()
-        GKAccessPoint.shared.isActive = true
-        GKAccessPoint.shared.location = .bottomLeading
     }
     
     func isPlacementValid(at index: Int) -> Bool {
@@ -67,10 +67,10 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
                 reportScoreIncrement(context: 0)
             }
             if !game.hasValidMoves() {
-                // game.restartGame()  -> You might want to uncomment this line
+                // game.restartGame()
             }
         } else {
-            // playSound(forResource: "placeNumber")   -> And this line too, when you have audio for an invalid move
+            // playSound(forResource: "placeNumber")
         }
     }
     
@@ -86,7 +86,9 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         return hasWon
     }
     
-    //Game Center
+    
+    /*Game Center*/
+    
     override init() {
         game = Game(mode: .easy)
         super.init()
@@ -111,24 +113,10 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true)
     }
-    ///Submit Leaderboard Data
-    //    func reportScore(score: Int, context: Int, forLeaderboardID leaderboardID: String) {
-    //            let localPlayer = GKLocalPlayer.local
-    //
-    //            if localPlayer.isAuthenticated {
-    //                //let leaderboardScore = GKLeaderboardScore(leaderboardIdentifier: leaderboardID, player: localPlayer, value: score)
-    //                GKLeaderboard.submitScore(score, context: context, player: localPlayer, leaderboardIDs: ["grp.AllTimeEasyWon"]) { error in
-    //                    if let error = error {
-    //                        print("Error submitting score: \(error.localizedDescription)")
-    //                    } else {
-    //                        print("Score submitted successfully!")
-    //                    }
-    //                }
-    //            }
-    //        }
     
+    ///Submit Leaderboard Data
     func reportScoreIncrement(context: Int) {
-        print("Reporting score increment...") // Debugging print
+        print("Reporting score increment...") // Debug
         let localPlayer = GKLocalPlayer.local
         let incrementValue = 1 // increment by 1 for each win
         var leaderboardID: String
@@ -143,26 +131,26 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         }
         
         if localPlayer.isAuthenticated {
-            print("Local player is authenticated") // Debugging print
+            print("Local player is authenticated") // Debug
             // Load the current leaderboard
             GKLeaderboard.loadLeaderboards(IDs: [leaderboardID]) { (leaderboards, error) in
                 if let error = error {
                     print("Error loading leaderboard: \(error.localizedDescription)")
                     return
                 }
-                print("Loaded leaderboards") // Debugging print
+                print("Loaded leaderboards") // Debug
                 if let leaderboard = leaderboards?.first {
                     leaderboard.loadEntries(for: [localPlayer], timeScope: .allTime) { (localPlayerEntry, entries, error) in
                         if let error = error {
                             print("Error loading entries: \(error.localizedDescription)")
                             return
                         }
-                        print("Loaded entries") // Debugging print
+                        print("Loaded entries") // Debug
                         // Check the score for the current player
                         if let currentScore = localPlayerEntry {
                             // Increment the score
                             let newScoreValue = currentScore.score + incrementValue
-                            print("New score value: \(newScoreValue)") // Debugging print
+                            print("New score value: \(newScoreValue)") // Debug
                             // Submit the updated score
                             GKLeaderboard.submitScore(newScoreValue, context: context, player: localPlayer, leaderboardIDs: [leaderboardID]) { error in
                                 if let error = error {
@@ -172,7 +160,7 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
                                 }
                             }
                         } else {
-                            // This is the player's first win, so just submit the increment value as the score
+                            // Players first win
                             GKLeaderboard.submitScore(incrementValue, context: context, player: localPlayer, leaderboardIDs: [leaderboardID]) { error in
                                 if let error = error {
                                     print("Error submitting score: \(error.localizedDescription)")
@@ -185,7 +173,7 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
                 }
             }
         } else {
-            print("Local player is not authenticated") // Debugging print
+            print("Local player is not authenticated") // Debug
         }
     }
 }

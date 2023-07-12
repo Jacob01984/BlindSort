@@ -16,7 +16,6 @@ struct RootView: View {
     @State private var showWelcomeScreen = !UserDefaults.standard.bool(forKey: "DidLaunchBefore")
     @State var showHowTo = false
     @State var showSettings = false
-    @State var showProfile = false
     
     @State var easyGame = false
     @State var mediumGame = false
@@ -24,115 +23,90 @@ struct RootView: View {
     
     var body: some View {
         
-        
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("darkBlue3"), Color("darkBlue") , Color("darkBlue3")]), startPoint: .topLeading, endPoint: .bottomTrailing)
-            
-                .ignoresSafeArea()
+            BackGroundView()
             
             VStack {
+                
+                
                 //Title
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10)
-                        .foregroundColor(Color("yellow1"))
+                
+                GeometryReader { geo in
+                    HStack {
+                        Spacer()
+                        Text("Blind Sort")
+                            .bold()
+                            .font(.largeTitle)
+                            .frame(width: geo.size.width * 0.8 ,height: geo.size.height * 0.25)
+                            .foregroundColor(Color("text-primary"))
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(10)
+                        .padding(.top, 30)
+                        Spacer()
+                    }
                     
-                    Text("Blind Number Sort")
-                        .font(.largeTitle)
-                        .foregroundColor(Color("text-primary"))
                 }
-                .frame(width: 350 ,height: 100)
-                .padding(.top, 50)
                 
                 Spacer()
                 
-                
-                //GameCenter LeaderBoard
-//                ZStack {
-//                    RoundedRectangle(cornerRadius: 10)
-//                        .foregroundColor(Color("yellow1"))
-//                        .frame(width: 350 ,height: 250)
-//                    VStack(alignment: .center) {
-//                        HStack {
-//                            Spacer()
-//                            Text("LeaderBoard")
-//                                .padding(.top, 15)
-//                                .padding(.leading, 11)
-//                            Spacer()
-//                            Button {
-//                                showProfile = true
-//                            } label: {
-//                                Image(systemName: "person.circle")
-//                                    .font(.title3)
-//                            }
-//                            .padding(.trailing, 10)
-//
-//                        }
-//                        Spacer()
-//                        RoundedRectangle(cornerRadius: 20)          //GameCenter leaderboard goes here
-//                            .frame(width: 300 ,height: 150)
-//                        Spacer()
-//                    }
-//                    .frame(width: 350 ,height: 250)
-//                }
-//
-//
-//                Spacer()
-                
-                //GameMode select easy(5), medium(10), hard(20)
-                
-                //Create sub-view to eliminate repeat code
-                Button {
-                    easyGame = true
-                    GKAccessPoint.shared.isActive = false
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 350, height: 100)
-                            .foregroundColor(Color("yellow1"))
-                        HStack {
-                            Text("Easy")
-                                .foregroundColor(Color("text-primary"))
-                            Image(systemName: "play.fill")
-                                .foregroundColor(Color("text-primary"))
+                GeometryReader { geo in
+                    HStack {
+                        Spacer()
+                        VStack {
+                            //GameMode select easy(5), medium(10), hard(20)
+                            ///Create sub-view to eliminate repeat code
+                            
+                            ///Easy Game
+                            Button {
+                                easyGame = true
+                            } label: {
+                                HStack {
+                                    Text("Easy")
+                                        .foregroundColor(Color("text-primary"))
+                                    Image(systemName: "play.fill")
+                                        .foregroundColor(Color("text-primary"))
+                                }
+                                .font(.title)
+                                .padding()
+                                .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.30)
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(14)
+                            }
+                            ///Medium Game
+                            Button {
+                                mediumGame = true
+                            } label: {
+                                HStack {
+                                    Text("Medium")
+                                        .foregroundColor(Color("text-primary"))
+                                    Image(systemName: "play.fill")
+                                        .foregroundColor(Color("text-primary"))
+                                }
+                                .font(.title)
+                                .padding()
+                                .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.30)
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(14)
+                            }
+                            ///Hard Game
+                            Button {
+                                hardGame = true
+                            } label: {
+                                HStack {
+                                    Text("Hard")
+                                        .foregroundColor(Color("text-primary"))
+                                    Image(systemName: "play.fill")
+                                        .foregroundColor(Color("text-primary"))
+                                }
+                                .font(.title)
+                                .padding()
+                                .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.30)
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(14)
+                            }
                         }
-                        .font(.title)
+                        Spacer()
                     }
-                }
-                Button {
-                    mediumGame = true
-                    GKAccessPoint.shared.isActive = false
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 350, height: 100)
-                            .foregroundColor(Color("yellow1"))
-                        HStack {
-                            Text("Medium")
-                                .foregroundColor(Color("text-primary"))
-                            Image(systemName: "play.fill")
-                                .foregroundColor(Color("text-primary"))
-                        }
-                        .font(.title)
-                    }
-                }
-                
-                Button {
-                    hardGame = true
-                    GKAccessPoint.shared.isActive = false
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 350, height: 100)
-                            .foregroundColor(Color("yellow1"))
-                        HStack {
-                            Text("Hard")
-                                .foregroundColor(Color("text-primary"))
-                            Image(systemName: "play.fill")
-                                .foregroundColor(Color("text-primary"))
-                        }
-                        .font(.title)
-                    }
-                    //.opacity(.greatestFiniteMagnitude)
                 }
                 
                 
@@ -146,19 +120,21 @@ struct RootView: View {
                     } label: {
                         Image(systemName: "questionmark.circle.fill")
                             .resizable()
-                            .frame(width: 30, height: 30)
-                            .tint(Color("icons-secondary"))
+                            .frame(width: 30, height: 30)           ///Fix sizing
+                            .foregroundStyle(.ultraThinMaterial)
                     }
                     Button {
                         showSettings = true
                     } label: {
                         Image(systemName: "gear.circle.fill")
                             .resizable()
-                            .frame(width: 30, height: 30)
-                            .tint(Color("icons-secondary"))
+                            .frame(width: 30, height: 30)           ///Fix sizing
+                            .foregroundStyle(.ultraThinMaterial)
                     }
+                    
                 }
                 .padding(.trailing, 30)
+                
             }
             
         }
@@ -176,22 +152,21 @@ struct RootView: View {
             Settings(isPresented: $showSettings, gameViewModel: GameViewModel(mode: .easy))
                 .presentationDragIndicator(.visible)
         })
-        .fullScreenCover(isPresented: $showProfile, content: {
-            UserProfile(showUserProfile: $showProfile)
-        })
         .fullScreenCover(isPresented: $easyGame) {
-            GameView(gameViewModel: GameViewModel(mode: .easy), isPresented: $easyGame)
+            GameView(gameViewModel: GameViewModel(mode: .easy), isGamePresented: $easyGame)
         }
         .fullScreenCover(isPresented: $mediumGame) {
-            GameView(gameViewModel: GameViewModel(mode: .medium), isPresented: $mediumGame)
+            GameView(gameViewModel: GameViewModel(mode: .medium), isGamePresented: $mediumGame)
         }
         .fullScreenCover(isPresented: $hardGame) {
-            GameView(gameViewModel: GameViewModel(mode: .hard), isPresented: $hardGame)
+            GameView(gameViewModel: GameViewModel(mode: .hard), isGamePresented: $hardGame)
         }
-        .onReceive(gameViewModel.$gameCenterLoginVC) { loginVC in
-            if loginVC != nil {
-                self.isShowingGameCenterLogin = true
-            }
+        .onAppear {
+            GKAccessPoint.shared.isActive = true
+            GKAccessPoint.shared.location = .topTrailing
+        }
+        .onDisappear {
+            GKAccessPoint.shared.isActive = false
         }
     }
 }
@@ -206,6 +181,6 @@ struct RootView: View {
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
         RootView(gameViewModel: GameViewModel(mode: .easy))
-            .preferredColorScheme(.dark)
     }
 }
+

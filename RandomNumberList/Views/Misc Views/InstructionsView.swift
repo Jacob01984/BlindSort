@@ -1,26 +1,28 @@
 //
-//  GameInstructions.swift
+//  InstructionsView.swift
 //  RandomNumberList
 //
-//  Created by Jacob Lavenant on 6/30/23.
+//  Created by Jacob Lavenant on 7/10/23.
 //
 
 import SwiftUI
+import GameKit
 
-struct WelcomeView: View {
+struct InstructionsView: View {
     
-    @Binding var showWelcome: Bool
+    @Binding var showHowTo: Bool
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("darkBlue3"), Color("darkBlue") , Color("darkBlue3")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(gradient: Gradient(colors: [Color("darkBlue3"), Color("lightBlue"), Color("darkBlue3"), Color("darkBlue2"), Color("darkBlue3"), Color("darkBlue2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
+                .blur(radius: 80, opaque: true)
             
             ScrollView {
                 
                 VStack() {
                     Spacer()
-                    Text("Welcome to Blind Number Sort!")
+                    Text("How-To Play")
                         .font(.title3)
                     Text("  You are given an empty list, and random numbers one at a time, ranging between 0-1000. The objective is to add each number in ascending order.")
                         .padding(.top, 15)
@@ -31,21 +33,6 @@ struct WelcomeView: View {
                     Text("Enjoy the game!")
                         .padding(.top, 15)
                     Spacer()
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 9)
-                            .foregroundColor(Color("yellow1"))
-                            .frame(width: 250, height: 50)
-                        Button {
-                            showWelcome = false
-                        } label: {
-                            Image(systemName: "play.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 35, height: 35)
-                                .foregroundColor(Color("text-primary"))
-                        }
-                    }
-                    .padding(.top, 200)
                     
                 }
                 .bold()
@@ -54,11 +41,17 @@ struct WelcomeView: View {
                 .padding()
             }
         }
+        .onAppear {
+            GKAccessPoint.shared.isActive = false
+        }
+        .onDisappear {
+            GKAccessPoint.shared.isActive = true
+        }
     }
 }
 
-struct WelcomeView_Previews: PreviewProvider {
+struct InstructionsView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView(showWelcome: .constant(true))
+        InstructionsView(showHowTo: .constant(true))
     }
 }

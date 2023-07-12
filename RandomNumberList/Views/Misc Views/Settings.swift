@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GameKit
 
 struct Settings: View {
     
@@ -40,11 +41,17 @@ struct Settings: View {
             }
         }
         .scrollContentBackground(.hidden)
-        .background(Color("darkBlue2"))
+        .background(Color("darkBlue3"))
         .sheet(isPresented: $showNotes) {
             DevNotes()
                 .presentationDetents([.fraction(0.8)])
                 .presentationDragIndicator(.visible)
+        }
+        .onAppear {
+            GKAccessPoint.shared.isActive = false
+        }
+        .onDisappear {
+            GKAccessPoint.shared.isActive = true
         }
     }
 }
