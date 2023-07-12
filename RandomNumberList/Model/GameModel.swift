@@ -12,7 +12,7 @@ struct Game {
     enum gameMode: Int, CaseIterable {
         case easy = 5
         case medium = 10
-        case hard = 1
+        case hard = 20
     }
     
     var mode: gameMode
