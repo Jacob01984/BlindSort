@@ -77,7 +77,15 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
     }
     
     func wonGame(score: Int) -> Bool {
-        game.wonGame(score: score)
+        let hasWon = game.wonGame(score: score)
+        if hasWon {
+            let leaderboardID = "grp.AllTimeEasyWon" // replace with your leaderboard ID
+            let context = 0 // replace with the context you want to use
+
+            reportScore(score: score, context: context, forLeaderboardID: leaderboardID)
+            reportScoreIncrement(context: context, forLeaderboardID: leaderboardID)
+        }
+        return hasWon
     }
     
     //Game Center
@@ -102,28 +110,61 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         }
     }
     
-    ///Game Center Access Point
-//    func configureAccessPoint() {
-//            let accessPoint = GKAccessPoint.shared
-//
-//            // Set the location of the Access Point
-//            accessPoint.location = .topLeading
-//
-//            // Show highlights like achievements
-//            accessPoint.showHighlights = true
-//
-//            // Activate the Access Point
-//            accessPoint.isActive = true
-//        
-//        }
-    
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true)
     }
+    ///Submit Leaderboard Data
+    func reportScore(score: Int, context: Int, forLeaderboardID leaderboardID: String) {
+            let localPlayer = GKLocalPlayer.local
+
+            if localPlayer.isAuthenticated {
+                //let leaderboardScore = GKLeaderboardScore(leaderboardIdentifier: leaderboardID, player: localPlayer, value: score)
+                GKLeaderboard.submitScore(score, context: context, player: localPlayer, leaderboardIDs: ["grp.AllTimeEasyWon"]) { error in
+                    if let error = error {
+                        print("Error submitting score: \(error.localizedDescription)")
+                    } else {
+                        print("Score submitted successfully!")
+                    }
+                }
+            }
+        }
     
-    class func submitScore(score: Int, player: GKLocalPlayer, LeaderboardsIDS: [String]) {
-        
-        
+    func reportScoreIncrement(context: Int, forLeaderboardID leaderboardID: String) {
+        let localPlayer = GKLocalPlayer.local
+        let incrementValue = 1 // increment by 1 for each win
+
+        if localPlayer.isAuthenticated {
+            // Load the current leaderboard
+            GKLeaderboard.loadLeaderboards(IDs: [leaderboardID]) { (leaderboards, error) in
+                if let error = error {
+                    print("Error loading leaderboard: \(error.localizedDescription)")
+                    return
+                }
+
+                if let leaderboard = leaderboards?.first {
+                    leaderboard.loadEntries(for: [localPlayer], timeScope: .allTime) { (localPlayerEntry, entries, error) in
+                        if let error = error {
+                            print("Error loading entries: \(error.localizedDescription)")
+                            return
+                        }
+
+                        // Check the score for the current player
+                        if let currentScore = localPlayerEntry {
+                            // Increment the score
+                            let newScoreValue = currentScore.score + incrementValue
+
+                            // Submit the updated score
+                            GKLeaderboard.submitScore(newScoreValue, context: context, player: localPlayer, leaderboardIDs: [leaderboardID]) { error in
+                                if let error = error {
+                                    print("Error submitting score: \(error.localizedDescription)")
+                                } else {
+                                    print("Score submitted successfully!")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
-    
 }
