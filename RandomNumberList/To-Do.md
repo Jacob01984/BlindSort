@@ -1,14 +1,13 @@
 #  To-Do
 
 ## Now
-- Finish audio
-
-
-##Next
 - Game Center leader boards
 
-##Later
+##Next
+- Finish audio
 
+##Later
+- Refresh UI to apple's style
 
 ##Complete
 - Game Finish pop up
