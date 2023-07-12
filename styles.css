@@ -1,13 +1,11 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #003566;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, #003566, #000713, #003566);
 }
 
 .container {
@@ -36,3 +34,38 @@ section {
     padding: 0 1em;
 }
 
+body {
+    font-family: Arial, sans-serif;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 20px;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+#screenshots img {
+    width: 200px;
+    height: auto;
+    margin: 10px;
+}
+
+#screenshots {
+    text-align: center;
+}
+
+#instructions {
+    color: white; 
+    text-align: center;
+    padding: 20px;
+}
