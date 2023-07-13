@@ -18,7 +18,6 @@ struct WelcomeView: View {
                 .blur(radius: 80, opaque: true)
             
             ScrollView {
-                
                 VStack() {
                     Spacer()
                     Text("Welcome to Blind Number Sort!")
@@ -34,6 +33,7 @@ struct WelcomeView: View {
                     
                     Spacer()
                     
+                    //Close WelcomeView
                     Button {
                         showWelcome = false
                     } label: {

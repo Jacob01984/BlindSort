@@ -16,7 +16,6 @@ struct GameView: View {
     
     @State var showWonGame = false
     
-    
     var body: some View {
         
         ZStack {
@@ -37,10 +36,8 @@ struct GameView: View {
                                 .padding(.bottom, 10)
                         }
                         
-                        
                         //List
                         ScrollView {
-                            
                             VStack {
                                 ForEach(gameViewModel.numbers.indices, id: \.self) { index in
                                     Button(action: {
@@ -98,6 +95,7 @@ struct GameView: View {
         }
     }
     
+    //Populated ListRow
     func ListRowPlaced(index: Int, number: Int) -> some View {
         GeometryReader { geometryy in
             HStack {
@@ -123,6 +121,8 @@ struct GameView: View {
         }
         .frame(height: 50)
     }
+    
+    //Empty ListRow
     func ListRow(index: Int) -> some View {
         GeometryReader { geometry in
             HStack {
@@ -156,6 +156,5 @@ struct GameView: View {
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
         GameView(gameViewModel: GameViewModel(mode: .medium), isGamePresented: .constant(true))
-        
     }
 }

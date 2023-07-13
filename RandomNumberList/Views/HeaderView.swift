@@ -19,9 +19,7 @@ struct HeaderView: View {
     
     var body: some View {
         
-        
         GeometryReader { geo in
-  
                 VStack {
                     HStack {
                         //Back to Root View
@@ -52,6 +50,7 @@ struct HeaderView: View {
                         }
                     }
                     .padding(.horizontal)
+                    
                     //Game generated number
                     HStack {
                         ZStack {
@@ -77,6 +76,5 @@ struct HeaderView: View {
 struct Header_Previews: PreviewProvider {
     static var previews: some View {
         HeaderView(gameViewModel: GameViewModel(mode: .easy), isPresented: .constant(false))
-        //.preferredColorScheme(.dark)
     }
 }

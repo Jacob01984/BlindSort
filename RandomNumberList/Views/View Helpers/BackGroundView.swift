@@ -20,7 +20,6 @@ struct BackGroundView: View {
         .ignoresSafeArea()
         .animation(.easeInOut(duration: 100).repeatForever(autoreverses: true).speed(8), value: ShowAnimation)
         .blur(radius: 80, opaque: true)
-        
         .onAppear { ShowAnimation.toggle() }
     }
 }

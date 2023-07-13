@@ -19,15 +19,17 @@ struct Settings: View {
     var body: some View {
         
         Form {
+            //Toggle Sound Effects
             Section {
                 Toggle(isOn: $gameViewModel.isSoundEnabled) {
                     Text("Sound Effects")
                 }
             } header: {
-                Text("Settings")
+                Text("Game Settings")
                     .foregroundColor(Color("text-primary"))
             }
             
+            //Show dev notes
             Section {
                 Button {
                     showNotes = true

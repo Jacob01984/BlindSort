@@ -44,18 +44,17 @@ struct RootView: View {
                         .padding(.top, 30)
                         Spacer()
                     }
-                    
                 }
                 
                 Spacer()
                 
+                
+                //GameMode select easy(5), medium(10), hard(20)
+                ///Create sub-view to eliminate repeat code
                 GeometryReader { geo in
                     HStack {
                         Spacer()
                         VStack {
-                            //GameMode select easy(5), medium(10), hard(20)
-                            ///Create sub-view to eliminate repeat code
-                            
                             ///Easy Game
                             Button {
                                 easyGame = true
@@ -109,8 +108,8 @@ struct RootView: View {
                     }
                 }
                 
-                
                 Spacer()
+                
                 
                 //How-To and Settings
                 HStack {
@@ -131,10 +130,8 @@ struct RootView: View {
                             .frame(width: 30, height: 30)           ///Fix sizing
                             .foregroundStyle(.ultraThinMaterial)
                     }
-                    
                 }
                 .padding(.trailing, 30)
-                
             }
             
         }
@@ -170,12 +167,6 @@ struct RootView: View {
         }
     }
 }
-
-
-
-
-
-
 
 
 struct RootView_Previews: PreviewProvider {

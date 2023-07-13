@@ -67,9 +67,11 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
                 reportScoreIncrement(context: 0)
             }
             if !game.hasValidMoves() {
+                ///Might add
                 // game.restartGame()
             }
         } else {
+            ///Still need the right audio
             // playSound(forResource: "placeNumber")
         }
     }
@@ -110,6 +112,7 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         }
     }
     
+    ///Access Point
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true)
     }
@@ -118,7 +121,7 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
     func reportScoreIncrement(context: Int) {
         print("Reporting score increment...") // Debug
         let localPlayer = GKLocalPlayer.local
-        let incrementValue = 1 // increment by 1 for each win
+        let incrementValue = 1
         var leaderboardID: String
         
         switch game.mode {
