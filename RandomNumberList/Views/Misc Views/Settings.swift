@@ -50,11 +50,12 @@ struct Settings: View {
                 .presentationDragIndicator(.visible)
         }
         .onAppear {
-            GKAccessPoint.shared.isActive = false
+            //GKAccessPoint.shared.isActive = false
+            gameViewModel.getAchievements(achievementId: "grp.BetaTesterAward", percent: 100.0)
         }
-        .onDisappear {
-            GKAccessPoint.shared.isActive = true
-        }
+//        .onDisappear {
+//            GKAccessPoint.shared.isActive = true
+//        }
     }
 }
 

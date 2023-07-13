@@ -16,6 +16,7 @@
 		BA5C56D32A51BE7D0091338D /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C56D22A51BE7D0091338D /* RootView.swift */; };
 		BA5C56DA2A525FA50091338D /* placeNumber.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA5C56D92A525FA50091338D /* placeNumber.mp3 */; };
 		BA5F63A32A5F00550098BF26 /* BackGroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F63A22A5F00550098BF26 /* BackGroundView.swift */; };
+		BA66E8482A603B6100D1F332 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA66E8472A603B6100D1F332 /* Formatters.swift */; };
 		BA7574262A4E10A000DB5B1A /* RandomNumberListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7574252A4E10A000DB5B1A /* RandomNumberListApp.swift */; };
 		BA7574282A4E10A000DB5B1A /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7574272A4E10A000DB5B1A /* GameView.swift */; };
 		BA75742A2A4E10A200DB5B1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7574292A4E10A200DB5B1A /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		BA5C56D92A525FA50091338D /* placeNumber.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = placeNumber.mp3; sourceTree = "<group>"; };
 		BA5C56DB2A5271DB0091338D /* To-Do.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "To-Do.md"; sourceTree = "<group>"; };
 		BA5F63A22A5F00550098BF26 /* BackGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundView.swift; sourceTree = "<group>"; };
+		BA66E8472A603B6100D1F332 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		BA7574222A4E10A000DB5B1A /* RandomNumberList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomNumberList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7574252A4E10A000DB5B1A /* RandomNumberListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberListApp.swift; sourceTree = "<group>"; };
 		BA7574272A4E10A000DB5B1A /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,14 @@
 			path = "Misc Views";
 			sourceTree = "<group>";
 		};
+		BA66E8462A603B4800D1F332 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BA66E8472A603B6100D1F332 /* Formatters.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		BA7574192A4E10A000DB5B1A = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +145,7 @@
 				BA5C56C72A4EF7CA0091338D /* Views */,
 				BA5C56C82A4EF7D70091338D /* View Models */,
 				BA5C56CB2A4EF9340091338D /* Model */,
+				BA66E8462A603B4800D1F332 /* Helpers */,
 				BA5C56D82A525F950091338D /* Sounds */,
 				BA7574292A4E10A200DB5B1A /* Assets.xcassets */,
 				BA75742B2A4E10A200DB5B1A /* Preview Content */,
@@ -228,6 +239,7 @@
 				BA293BD92A52F5220003DD64 /* Settings.swift in Sources */,
 				BA5C56CA2A4EF9030091338D /* GameViewModel.swift in Sources */,
 				BA5F63A32A5F00550098BF26 /* BackGroundView.swift in Sources */,
+				BA66E8482A603B6100D1F332 /* Formatters.swift in Sources */,
 				BA7574282A4E10A000DB5B1A /* GameView.swift in Sources */,
 				BA7574262A4E10A000DB5B1A /* RandomNumberListApp.swift in Sources */,
 				BA5C56D12A4F07340091338D /* WelcomeView.swift in Sources */,
@@ -360,7 +372,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RandomNumberList/RandomNumberList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"RandomNumberList/Preview Content\"";
 				DEVELOPMENT_TEAM = 6LQ54Z2R3L;
 				ENABLE_PREVIEWS = YES;
@@ -378,7 +390,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = JacobLavenant.BlindSort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -398,7 +410,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = RandomNumberList/RandomNumberList.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"RandomNumberList/Preview Content\"";
 				DEVELOPMENT_TEAM = 6LQ54Z2R3L;
 				ENABLE_PREVIEWS = YES;
@@ -416,7 +428,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 1.12;
 				PRODUCT_BUNDLE_IDENTIFIER = JacobLavenant.BlindSort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

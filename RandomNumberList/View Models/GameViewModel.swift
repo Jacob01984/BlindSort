@@ -14,11 +14,20 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
     
     @Published private(set) var game: Game
     @Published var wonGame: Bool = false
-    @AppStorage("isSoundEnabled") var isSoundEnabled: Bool = true
     @Published var gameCenterLoginVC: UIViewController?
     
+    @AppStorage("isSoundEnabled") var isSoundEnabled: Bool = true
     
-    /*Audio*/
+    @Published var timeElapsed: Double = 0.0
+    var timer: Timer? = nil
+    var isFirstCall = true
+    
+    //
+    //
+    //Audio
+    //
+    //
+    
     var audioPlayer: AVAudioPlayer?
     
     func playSound(forResource soundName: String, withExtension ext: String = "mp3") {
@@ -35,8 +44,12 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         }
     }
     
+    //
+    //
+    //Game Logic
+    //
+    //
     
-    /*Game Logic*/
     var numbers: [Int?] {
         game.numbers
     }
@@ -59,16 +72,22 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
     }
     
     func placeNumber(at index: Int) {
+        if isFirstCall {
+            startTimer()
+            isFirstCall = false
+        }
         if game.placeNumber(at: index) {
             playSound(forResource: "placeNumber")
             if game.wonGame(score: game.score) {
                 wonGame = true
-                
+                print("Time: \(timeElapsed)")
                 reportScoreIncrement(context: 0)
+                reportElapsedTime(context: 1, timeElapsed: timeElapsed)
             }
             if !game.hasValidMoves() {
                 ///Might add
-                // game.restartGame()
+                /// game.restartGame()
+                stopTimer()
             }
         } else {
             ///Still need the right audio
@@ -80,6 +99,9 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         let mode = game.mode
         game = Game(mode: mode)
         game.restartGame()
+        self.timeElapsed = 0.0
+        stopTimer()
+        isFirstCall = true
     }
     
     func wonGame(score: Int) -> Bool {
@@ -88,8 +110,37 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         return hasWon
     }
     
+    //    func getTime() -> Double {
+    //        if wonGame {
+    //            let gameTime = self.timeElapsed
+    //            print(gameTime)
+    //            return gameTime
+    //        } else {
+    //            return 0.0
+    //        }
+    //    }
     
-    /*Game Center*/
+    func startTimer() {
+        self.timer?.invalidate()
+        self.timeElapsed = 0.0
+        
+        self.timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func updateTimer() {
+        self.timeElapsed += 1.0
+    }
+    
+    func stopTimer() {
+        self.timer?.invalidate()
+        self.timer = nil
+    }
+    
+    //
+    //
+    //Game Center
+    //
+    //
     
     override init() {
         game = Game(mode: .easy)
@@ -117,7 +168,7 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         gameCenterViewController.dismiss(animated: true)
     }
     
-    ///Submit Leaderboard Data
+    ///Submit/ Update All-Time Win Leaderboard Score
     func reportScoreIncrement(context: Int) {
         print("Reporting score increment...") // Debug
         let localPlayer = GKLocalPlayer.local
@@ -134,41 +185,41 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         }
         
         if localPlayer.isAuthenticated {
-            print("Local player is authenticated") // Debug
+            print("Local player is authenticated(AllTime)") // Debug
             // Load the current leaderboard
             GKLeaderboard.loadLeaderboards(IDs: [leaderboardID]) { (leaderboards, error) in
                 if let error = error {
-                    print("Error loading leaderboard: \(error.localizedDescription)")
+                    print("Error loading leaderboard(AllTime): \(error.localizedDescription)")
                     return
                 }
-                print("Loaded leaderboards") // Debug
+                print("Loaded leaderboards(AllTime)") // Debug
                 if let leaderboard = leaderboards?.first {
                     leaderboard.loadEntries(for: [localPlayer], timeScope: .allTime) { (localPlayerEntry, entries, error) in
                         if let error = error {
-                            print("Error loading entries: \(error.localizedDescription)")
+                            print("Error loading entries(AllTime): \(error.localizedDescription)")
                             return
                         }
-                        print("Loaded entries") // Debug
+                        print("Loaded entries(AllTime)") // Debug
                         // Check the score for the current player
                         if let currentScore = localPlayerEntry {
                             // Increment the score
                             let newScoreValue = currentScore.score + incrementValue
-                            print("New score value: \(newScoreValue)") // Debug
+                            print("New score value(AllTime): \(newScoreValue)") // Debug
                             // Submit the updated score
                             GKLeaderboard.submitScore(newScoreValue, context: context, player: localPlayer, leaderboardIDs: [leaderboardID]) { error in
                                 if let error = error {
-                                    print("Error submitting score: \(error.localizedDescription)")
+                                    print("Error submitting score(AllTime): \(error.localizedDescription)")
                                 } else {
-                                    print("Score submitted successfully!")
+                                    print("Score submitted successfully!(AllTime)")
                                 }
                             }
                         } else {
                             // Players first win
                             GKLeaderboard.submitScore(incrementValue, context: context, player: localPlayer, leaderboardIDs: [leaderboardID]) { error in
                                 if let error = error {
-                                    print("Error submitting score: \(error.localizedDescription)")
+                                    print("Error submitting score(AllTime): \(error.localizedDescription)")
                                 } else {
-                                    print("Score submitted successfully!")
+                                    print("Score submitted successfully!(AllTime)")
                                 }
                             }
                         }
@@ -176,7 +227,88 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
                 }
             }
         } else {
-            print("Local player is not authenticated") // Debug
+            print("Local player is not authenticated(AllTime)") // Debug
         }
     }
+    
+    ///Submit/ Update All-Time Win Leaderboard Score
+    func reportElapsedTime(context: Int, timeElapsed: Double) {
+        let localPlayer = GKLocalPlayer.local
+        let timeLeaderboardsID: String
+        
+        switch game.mode {
+        case .easy:
+            timeLeaderboardsID = "grp.FastestEasyGameWon"
+        case .medium:
+            timeLeaderboardsID = "grp.FastestMediumGameWon"
+        case .hard:
+            timeLeaderboardsID = "grp.FastestHardGameWon"
+        }
+        
+        if localPlayer.isAuthenticated {
+            print("Local player is authenticated(fastest)") // Debug
+            // Load the current leaderboard
+            GKLeaderboard.loadLeaderboards(IDs: [timeLeaderboardsID]) { (leaderboards, error) in
+                if let error = error {
+                    print("Error loading leaderboard(fastest): \(error.localizedDescription)")
+                    return
+                }
+                print("Loaded leaderboards(fastest)") // Debug
+                if let leaderboard = leaderboards?.first {
+                    leaderboard.loadEntries(for: [localPlayer], timeScope: .allTime) { (localPlayerEntry, entries, error) in
+                        if let error = error {
+                            print("Error loading entries(fastest): \(error.localizedDescription)")
+                            return
+                        }
+                        print("Loaded entries(fastest)") // Debug
+                        // Check the score for the current player
+                        if let currentScore = localPlayerEntry {
+                            // Only submit score if its less than the previous score
+                            if Int(timeElapsed) < currentScore.score {
+                                print("New score value(fastest): \(timeElapsed)") // Debug
+                                // Submit the updated score
+                                GKLeaderboard.submitScore(Int(timeElapsed), context: context, player: localPlayer, leaderboardIDs: [timeLeaderboardsID]) { error in
+                                    if let error = error {
+                                        print("Error submitting score(fastest): \(error.localizedDescription)")
+                                    } else {
+                                        print("Score submitted successfully(fastest)!")
+                                    }
+                                }
+                            }
+                        } else {
+                            // Players first win post time
+                            GKLeaderboard.submitScore(Int(timeElapsed), context: context, player: localPlayer, leaderboardIDs: [timeLeaderboardsID]) { error in
+                                if let error = error {
+                                    print("Error submitting score(fastest): \(error.localizedDescription)")
+                                } else {
+                                    print("Score submitted successfully(fastest)!")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            print("Local player is not authenticated(fastest)") // Debug
+        }
+        
+    }
+    
+    ///Achievenments
+    func getAchievements( achievementId: String, percent: Double) {
+        var achievements = [GKAchievement]()
+        
+        let reportAchievement = GKAchievement(identifier: achievementId)
+        reportAchievement.percentComplete = percent
+        achievements.append(reportAchievement)
+        
+        GKAchievement.report(achievements) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else {
+                print("Successful")
+            }
+        }
+    }
+    
 }

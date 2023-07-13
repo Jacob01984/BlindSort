@@ -67,18 +67,34 @@ struct GameView: View {
             
             
             //Score
-            GeometryReader { geometry in
-                VStack {
-                    Text("Score:")
-                        .font(.title)
-                    Text("\(gameViewModel.score)")
-                        .font(.title2)
+            VStack {
+                GeometryReader { geometry in
+                    VStack {
+                        Text("Score:")
+                            .font(.title)
+                        Text("\(gameViewModel.score)")
+                            .font(.title2)
+                    }
+                    .padding(3)
+                    .foregroundColor(Color("text-primary"))
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(15)
+                    .frame(width: geometry.size.width * 1.70, height: geometry.size.height * 3.3)
                 }
-                .padding(5)
-                .foregroundColor(Color("text-primary"))
-                .background(.ultraThinMaterial)
-                .cornerRadius(15)
-                .frame(width: geometry.size.width * 1.7, height: geometry.size.height * 1.9)
+                GeometryReader { geometry in
+                    VStack {
+                        Text("Time:")
+                            .font(.title)
+                        Text("\(Formatters.formatTime(hundredthsOfASecond: gameViewModel.timeElapsed))")
+                            .font(.title2)
+                    }
+                    .padding(5)
+                    .foregroundColor(Color("text-primary"))
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(15)
+                    .frame(width: geometry.size.width * 1.70, height: geometry.size.height * 1.7)
+                }
+
             }
         }
         .alert("Game Won!", isPresented: $gameViewModel.wonGame, presenting: gameViewModel) { game in
@@ -155,6 +171,6 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(gameViewModel: GameViewModel(mode: .medium), isGamePresented: .constant(true))
+        GameView(gameViewModel: GameViewModel(mode: .easy), isGamePresented: .constant(true))
     }
 }
