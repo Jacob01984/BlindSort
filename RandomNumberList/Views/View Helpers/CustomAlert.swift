@@ -52,9 +52,7 @@ struct CustomAlert: View {
                 }
                 .frame(width: 300, height: 125)
                 .background(.regularMaterial)
-            .cornerRadius(10)
-        
-        
+                .cornerRadius(10)
     }
 }
 

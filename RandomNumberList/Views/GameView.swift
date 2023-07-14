@@ -111,6 +111,7 @@ struct GameView: View {
                 }
             }
         }
+        .animation(.easeOut(duration: 8).speed(10), value: gameViewModel.wonGame)
     }
     
     //Populated ListRow
