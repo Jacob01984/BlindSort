@@ -60,6 +60,10 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         game.score
     }
     
+    func noValidMoves() -> Bool {
+        !game.hasValidMoves()
+    }
+    
     init(mode: Game.gameMode) {
         game = Game(mode: mode)
         super.init()

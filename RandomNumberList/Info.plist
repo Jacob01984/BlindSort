@@ -3,6 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>UILaunchScreen</key>
-	<dict/>
+	<dict>
+		<key>UIImageName</key>
+		<string>launchScreenImage</string>
+		<key>UIImageRespectsSafeAreaInsets</key>
+		<string>NO</string>
+		<key>UIColorName</key>
+		<string>darkBlue2</string>
+	</dict>
 </dict>
 </plist>

@@ -20,7 +20,7 @@ struct GameView: View {
         
         ZStack {
             //Background Colors
-            LinearGradient(gradient: Gradient(colors: [Color("darkBlue3"), Color("lightBlue"), Color("darkBlue3"), Color("darkBlue2"), Color("darkBlue3"), Color("darkBlue2")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(gradient: Gradient(colors: [Color("lightBlue"), Color("darkBlue3"), Color("darkBlue2"), Color("darkBlue2"), Color("darkBlue3"), Color("lightBlue")]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
                 .blur(radius: 80, opaque: true)
             
@@ -65,7 +65,6 @@ struct GameView: View {
                 }
             }
             
-            
             //Score
             VStack {
                 GeometryReader { geometry in
@@ -94,13 +93,6 @@ struct GameView: View {
                     .cornerRadius(15)
                     .frame(width: geometry.size.width * 1.70, height: geometry.size.height * 1.7)
                 }
-
-            }
-        }
-        .alert("Game Won!", isPresented: $gameViewModel.wonGame, presenting: gameViewModel) { game in
-            Button("Back", role: .cancel) { }
-            Button("Next") {
-                gameViewModel.restartGame()
             }
         }
         .onAppear {
@@ -108,6 +100,16 @@ struct GameView: View {
         }
         .onDisappear {
             GKAccessPoint.shared.isActive = true
+        }
+        .overlay {
+            Group {
+                if gameViewModel.wonGame {
+                    CustomAlert(isPresented: $showWonGame, title: "Game Won!", message: "", leftButtonLabel: "Back", rightButtonLabel: "Next",leftButtonAction: { gameViewModel.wonGame = false }, rightButtonAction: {
+                        gameViewModel.restartGame()
+                        gameViewModel.wonGame = false
+                    })
+                }
+            }
         }
     }
     
@@ -118,15 +120,15 @@ struct GameView: View {
                 Spacer()
                 if index + 1 > 9 {
                     Text("\(index + 1)")
-                        .foregroundStyle(.thinMaterial)
+                        .foregroundStyle(.ultraThinMaterial)
                 } else {
                     Text("\(index + 1) ")
-                        .foregroundStyle(.thinMaterial)
+                        .foregroundStyle(.ultraThinMaterial)
                 }
                 Spacer()
                 ZStack {
                     Rectangle()
-                        .foregroundStyle(.thinMaterial)
+                        .foregroundStyle(.ultraThinMaterial)
                     Text("\(number)")
                         .font(.title)
                         .foregroundColor(Color("text-primary"))
@@ -153,7 +155,7 @@ struct GameView: View {
                 Spacer()
                 ZStack {
                     Rectangle()
-                        .foregroundStyle(.ultraThinMaterial)
+                        .foregroundStyle(.thinMaterial)
                         .border(Color("yellow2"), width: gameViewModel.isPlacementValid(at: index) ? 2 : 0)
                         .frame(width: geometry.size.width * 0.85, height: 50)
                     Text("-")
