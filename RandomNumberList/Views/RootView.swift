@@ -41,7 +41,7 @@ struct RootView: View {
                             .foregroundColor(Color("text-primary"))
                             .background(.ultraThinMaterial)
                             .cornerRadius(10)
-                        .padding(.top, 30)
+                            .padding(.top, 30)
                         Spacer()
                     }
                 }

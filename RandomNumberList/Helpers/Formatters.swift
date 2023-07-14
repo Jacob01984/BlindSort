@@ -19,5 +19,4 @@ struct Formatters {
             return String(format: "%02d:%02d.%02d", minutes, seconds, hundredths)
         }
     }
-    
 }

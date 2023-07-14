@@ -109,17 +109,7 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         
         return hasWon
     }
-    
-    //    func getTime() -> Double {
-    //        if wonGame {
-    //            let gameTime = self.timeElapsed
-    //            print(gameTime)
-    //            return gameTime
-    //        } else {
-    //            return 0.0
-    //        }
-    //    }
-    
+    ///Timer
     func startTimer() {
         self.timer?.invalidate()
         self.timeElapsed = 0.0
@@ -174,14 +164,18 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         let localPlayer = GKLocalPlayer.local
         let incrementValue = 1
         var leaderboardID: String
+        let achievementID: String
         
         switch game.mode {
         case .easy:
             leaderboardID = "grp.AllTimeEasyWon"
+            achievementID = "grp.beatEazyGame"
         case .medium:
             leaderboardID = "grp.AllTimeMediumWon"
+            achievementID = "grp.beatMediumGame"
         case .hard:
             leaderboardID = "grp.AllTimeHardWon"
+            achievementID = "grp.beatHardGame"
         }
         
         if localPlayer.isAuthenticated {
@@ -220,6 +214,10 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
                                     print("Error submitting score(AllTime): \(error.localizedDescription)")
                                 } else {
                                     print("Score submitted successfully!(AllTime)")
+                                    //Reward achievement on first game won
+                                    if incrementValue == 1 {
+                                        GameCenterHelper.getAchievements(achievementId: achievementID, percent: 100)
+                                    }
                                 }
                             }
                         }
@@ -293,22 +291,4 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         }
         
     }
-    
-    ///Achievenments
-    func getAchievements( achievementId: String, percent: Double) {
-        var achievements = [GKAchievement]()
-        
-        let reportAchievement = GKAchievement(identifier: achievementId)
-        reportAchievement.percentComplete = percent
-        achievements.append(reportAchievement)
-        
-        GKAchievement.report(achievements) { error in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-            } else {
-                print("Successful")
-            }
-        }
-    }
-    
 }

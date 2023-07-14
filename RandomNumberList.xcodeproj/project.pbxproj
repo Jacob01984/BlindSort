@@ -17,6 +17,7 @@
 		BA5C56DA2A525FA50091338D /* placeNumber.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA5C56D92A525FA50091338D /* placeNumber.mp3 */; };
 		BA5F63A32A5F00550098BF26 /* BackGroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5F63A22A5F00550098BF26 /* BackGroundView.swift */; };
 		BA66E8482A603B6100D1F332 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA66E8472A603B6100D1F332 /* Formatters.swift */; };
+		BA66E8622A60F58E00D1F332 /* GameCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA66E8612A60F58E00D1F332 /* GameCenterHelper.swift */; };
 		BA7574262A4E10A000DB5B1A /* RandomNumberListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7574252A4E10A000DB5B1A /* RandomNumberListApp.swift */; };
 		BA7574282A4E10A000DB5B1A /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7574272A4E10A000DB5B1A /* GameView.swift */; };
 		BA75742A2A4E10A200DB5B1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7574292A4E10A200DB5B1A /* Assets.xcassets */; };
@@ -37,6 +38,8 @@
 		BA5C56DB2A5271DB0091338D /* To-Do.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "To-Do.md"; sourceTree = "<group>"; };
 		BA5F63A22A5F00550098BF26 /* BackGroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackGroundView.swift; sourceTree = "<group>"; };
 		BA66E8472A603B6100D1F332 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		BA66E8602A608E3000D1F332 /* RandomNumberList copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RandomNumberList copy-Info.plist"; path = "/Users/jacoblavenant/Documents/Xcode Projects/RandomNumberList/RandomNumberList copy-Info.plist"; sourceTree = "<absolute>"; };
+		BA66E8612A60F58E00D1F332 /* GameCenterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterHelper.swift; sourceTree = "<group>"; };
 		BA7574222A4E10A000DB5B1A /* RandomNumberList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RandomNumberList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7574252A4E10A000DB5B1A /* RandomNumberListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNumberListApp.swift; sourceTree = "<group>"; };
 		BA7574272A4E10A000DB5B1A /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -116,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				BA66E8472A603B6100D1F332 /* Formatters.swift */,
+				BA66E8612A60F58E00D1F332 /* GameCenterHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -125,6 +129,7 @@
 			children = (
 				BA7574242A4E10A000DB5B1A /* RandomNumberList */,
 				BA7574232A4E10A000DB5B1A /* Products */,
+				BA66E8602A608E3000D1F332 /* RandomNumberList copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -235,6 +240,7 @@
 			files = (
 				BA5C56D32A51BE7D0091338D /* RootView.swift in Sources */,
 				BA7BC7652A5C52EB00C783AC /* InstructionsView.swift in Sources */,
+				BA66E8622A60F58E00D1F332 /* GameCenterHelper.swift in Sources */,
 				BA5C56CD2A4EF94F0091338D /* GameModel.swift in Sources */,
 				BA293BD92A52F5220003DD64 /* Settings.swift in Sources */,
 				BA5C56CA2A4EF9030091338D /* GameViewModel.swift in Sources */,
@@ -390,7 +396,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.12;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = JacobLavenant.BlindSort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -428,7 +434,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.12;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = JacobLavenant.BlindSort;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

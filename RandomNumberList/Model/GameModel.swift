@@ -11,7 +11,7 @@ import Foundation
 struct Game {
     enum gameMode: Int, CaseIterable {
         case easy = 5
-        case medium = 10
+        case medium = 8
         case hard = 20
     }
     
@@ -28,6 +28,10 @@ struct Game {
     
     mutating func generateNextNumber() {
         nextNumber = Int.random(in: 0...1000)
+        
+        if nextNumber == 69 {
+            GameCenterHelper.getAchievements(achievementId: "grp.Nice", percent: 100)
+        }
     }
     
     mutating func placeNumber(at index: Int) -> Bool {
