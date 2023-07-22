@@ -20,7 +20,8 @@ struct GameView: View {
         
         ZStack {
             //Background Colors
-            LinearGradient(gradient: Gradient(colors: [Color("lightBlue"), Color("darkBlue3"), Color("darkBlue2"), Color("darkBlue2"), Color("darkBlue3"), Color("lightBlue")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+//            LinearGradient(gradient: Gradient(colors: [Color("lightBlue"), Color("darkBlue3"), Color("darkBlue2"), Color("darkBlue2"), Color("darkBlue3"), Color("lightBlue")]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            Color("darkBlue3")
                 .ignoresSafeArea()
                 .blur(radius: 80, opaque: true)
             
@@ -31,7 +32,7 @@ struct GameView: View {
                         //Header
                         VStack {
                             HeaderView(gameViewModel: gameViewModel, isPresented: $isGamePresented)
-                                .frame(width: geo.size.width * 0.94, height: 130)
+                                .frame(width: geo.size.width * 0.94, height: 90)
                                 .padding(.top, 10)
                                 .padding(.bottom, 10)
                         }
@@ -59,13 +60,15 @@ struct GameView: View {
                             .background(.ultraThinMaterial)
                             .cornerRadius(10)
                         }
+                        .frame(width: geo.size.width * 0.94, height: geo.size.height * 0.815)
+                        .cornerRadius(10)
                         .padding(.top, 20)
                     }
                     Spacer()
                 }
             }
             
-            //Score
+            //Score and Time
             VStack {
                 GeometryReader { geometry in
                     VStack {
@@ -128,7 +131,7 @@ struct GameView: View {
                 }
                 Spacer()
                 ZStack {
-                    Rectangle()
+                    RoundedRectangle(cornerRadius: 5)
                         .foregroundStyle(.ultraThinMaterial)
                     Text("\(number)")
                         .font(.title)
@@ -149,15 +152,19 @@ struct GameView: View {
                 if index + 1 > 9 {
                     Text("\(index + 1)")
                         .foregroundColor(Color("text-primary"))
+                        .bold()
                 } else {
                     Text("\(index + 1) ")
                         .foregroundColor(Color("text-primary"))
+                        .bold()
                 }
                 Spacer()
                 ZStack {
-                    Rectangle()
-                        .foregroundStyle(.thinMaterial)
-                        .border(Color("yellow2"), width: gameViewModel.isPlacementValid(at: index) ? 2 : 0)
+                    RoundedRectangle(cornerRadius: 5)
+                        .foregroundStyle(gameViewModel.isPlacementValid(at: index) ? .thinMaterial : .ultraThinMaterial)
+                        //.opacity(gameViewModel.isPlacementValid(at: index) ? 1 : 0.1)
+                        //.border(Color("yellow1"), width: gameViewModel.isPlacementValid(at: index) ? 2 : 0)
+                        .shadow(color: .gray, radius: 20, x: 10, y: 10)
                         .frame(width: geometry.size.width * 0.85, height: 50)
                     Text("-")
                         .foregroundColor(Color("text-primary"))
@@ -174,6 +181,7 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(gameViewModel: GameViewModel(mode: .easy), isGamePresented: .constant(true))
+        GameView(gameViewModel: GameViewModel(mode: .hard), isGamePresented: .constant(true))
+            .preferredColorScheme(.dark)
     }
 }

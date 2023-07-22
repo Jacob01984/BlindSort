@@ -6,6 +6,8 @@
 ##Next
 - Reocurring Leaderboards
 - Animation on Alert
+- Show score or/and time settings 
+- New ScoreBoard
 
 --------------------------------
 ##Later

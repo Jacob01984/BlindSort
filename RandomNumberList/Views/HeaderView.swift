@@ -36,10 +36,23 @@ struct HeaderView: View {
                     }
                     
                     Spacer()
+    //Might Keep
+                    HStack {
+                        ZStack {
+                            //RoundedRectangle(cornerRadius: 15)
+                                //.foregroundColor(Color("yellow2"))
+                                //.frame(width: 95, height: 50)
+                            Text("\(gameViewModel.nextNumber)")
+                                .font(.largeTitle)
+                                .foregroundColor(Color("darkBlue2"))
+                                .frame(width: 100, height: 50)
+                        }
+                        .background(.thinMaterial)
+                        .opacity(0.9)
+                        .cornerRadius(7)
+                    }
+                    .shadow(color: .gray, radius: 20, x: 10, y: 5)
                     
-                    Text("Blind Sort")
-                        .font(.title3)
-                        .foregroundColor(Color("text-primary"))
                     
                     Spacer()
                     //Restart Game
@@ -60,16 +73,16 @@ struct HeaderView: View {
                 .padding(.horizontal)
                 
                 //Game generated number
-                HStack {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundColor(Color("yellow2"))
-                            .frame(width: 95, height: 50)
-                        Text("\(gameViewModel.nextNumber)")
-                            .font(.largeTitle)
-                            .foregroundColor(Color("darkBlue2"))
-                    }
-                }
+//                HStack {
+//                    ZStack {
+//                        RoundedRectangle(cornerRadius: 15)
+//                            .foregroundColor(Color("yellow2"))
+//                            .frame(width: 95, height: 50)
+//                        Text("\(gameViewModel.nextNumber)")
+//                            .font(.largeTitle)
+//                            .foregroundColor(Color("darkBlue2"))
+//                    }
+//                }
             }
             .padding(.top, geo.size.height * 0.15)
             .padding(.bottom, geo.size.height * 0.15)

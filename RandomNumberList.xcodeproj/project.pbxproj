@@ -25,6 +25,7 @@
 		BA7BC7652A5C52EB00C783AC /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7BC7642A5C52EB00C783AC /* InstructionsView.swift */; };
 		BAAEBE372A617FAA006FA8C0 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEBE362A617FAA006FA8C0 /* CustomAlert.swift */; };
 		BAAEBE5D2A61B60F006FA8C0 /* launchScreenImage.png in Resources */ = {isa = PBXBuildFile; fileRef = BAAEBE5C2A61B60F006FA8C0 /* launchScreenImage.png */; };
+		BAAEBE622A62D27F006FA8C0 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAEBE612A62D27F006FA8C0 /* Scoreboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		BA7BC7682A5DE24900C783AC /* RandomNumberList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RandomNumberList.entitlements; sourceTree = "<group>"; };
 		BAAEBE362A617FAA006FA8C0 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		BAAEBE5C2A61B60F006FA8C0 /* launchScreenImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchScreenImage.png; sourceTree = "<group>"; };
+		BAAEBE612A62D27F006FA8C0 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				BA5C56D22A51BE7D0091338D /* RootView.swift */,
 				BA7574272A4E10A000DB5B1A /* GameView.swift */,
 				BA5C56CE2A4EFD450091338D /* HeaderView.swift */,
+				BAAEBE612A62D27F006FA8C0 /* Scoreboard.swift */,
 				BA5F63A52A5F43520098BF26 /* Misc Views */,
 				BA5F63A42A5F0D8E0098BF26 /* View Helpers */,
 			);
@@ -256,6 +259,7 @@
 				BA5C56D32A51BE7D0091338D /* RootView.swift in Sources */,
 				BA7BC7652A5C52EB00C783AC /* InstructionsView.swift in Sources */,
 				BA66E8622A60F58E00D1F332 /* GameCenterHelper.swift in Sources */,
+				BAAEBE622A62D27F006FA8C0 /* Scoreboard.swift in Sources */,
 				BA5C56CD2A4EF94F0091338D /* GameModel.swift in Sources */,
 				BA293BD92A52F5220003DD64 /* Settings.swift in Sources */,
 				BA5C56CA2A4EF9030091338D /* GameViewModel.swift in Sources */,

@@ -68,7 +68,7 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         game = Game(mode: mode)
         super.init()
         self.game.generateNextNumber()
-        self.authenticateLocalPlayer()
+        //self.authenticateLocalPlayer()
     }
     
     func isPlacementValid(at index: Int) -> Bool {
@@ -140,7 +140,7 @@ class GameViewModel: NSObject, GKGameCenterControllerDelegate, ObservableObject,
         game = Game(mode: .easy)
         super.init()
         game.generateNextNumber()
-        authenticateLocalPlayer()
+        //authenticateLocalPlayer()
     }
     ///Auth
     func authenticateLocalPlayer() {
